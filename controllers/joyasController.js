@@ -1,4 +1,5 @@
 import { getJoyas, getFilter } from '../models/joyasModel.js'
+import { findError } from "../utils/utils.js"
 
 const prepararHATEOAS = (joyas) => {
   const results = joyas.map((j) => { return {
@@ -24,16 +25,11 @@ const getAllJoyas = async (req, res) => {
     const HATEOAS = await prepararHATEOAS(joyas)
     res.status(200).json(HATEOAS)
   } catch (error) {
-    const { code } = error
-    if (code == "23502") {
-      res.status(400)
-        .send("Se ha violado la restricción NOT NULL en uno de los campos de la tabla")
-    } else if (code == "22P02") {
-      res.status(400)
-        .send("Bad Request: el servidor no puede procesar la solicitud debido a un error del cliente")
-      } else {
-      res.status(500).send(error)
-    }
+    console.log(error);
+    const errorFound = findError(error.code);
+    return res
+      .status(errorFound[0]?.status)
+      .json({ error: errorFound[0]?.message });
   }
 }
 
@@ -43,17 +39,12 @@ const getFilterJoyas = async (req, res) => {
     const joyas_filter = await getFilter(precio_max,precio_min,categoria,metal)
     res.status(200).json(joyas_filter)
   } catch (error) {
-    const { code } = error
-    if (code == "23502") {
-      res.status(400)
-        .send("Se ha violado la restricción NOT NULL en uno de los campos de la tabla")
-    } else if (code == "22P02") {
-      res.status(400)
-        .send("Bad Request: el servidor no puede procesar la solicitud debido a un error del cliente")
-      } else {
-      res.status(500).send(error)
-    }
+    console.log(error);
+    const errorFound = findError(error.code);
+    return res
+      .status(errorFound[0]?.status)
+      .json({ error: errorFound[0]?.message });
   }
-}
+};
 
 export { getAllJoyas, getFilterJoyas }

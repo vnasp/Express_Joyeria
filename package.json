@@ -1,22 +1,24 @@
 {
   "name": "desafio_joyeria",
   "version": "1.0.0",
-  "description": "",
+  "description": "* API REST * Límite de recursos * Filtro de recursos por campos * Paginación * Ordenamiento * Estructura de datos HATEOAS",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "logger-express": "^1.1.0",
-    "nodemon": "^3.0.3",
     "pg": "^8.11.3",
     "pg-format": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
