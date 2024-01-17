@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllJoyas, getFilterJoyas} from '../controllers/joyasController.js'
+import {getAllJoyas, getFilterJoyas} from '../src/controllers/joyasController.js'
 
 const router = express.Router()
 

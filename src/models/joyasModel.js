@@ -1,4 +1,4 @@
-import pool from "../db/connectionDB.js"
+import pool from "../../db/connectionDB.js"
 import format from "pg-format"
 
 const getJoyas = async (order_by = "stock_ASC", limits = 10, page = 1) => {

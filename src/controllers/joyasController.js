@@ -1,5 +1,5 @@
-import { getJoyas, getFilter } from '../models/joyasModel.js'
-import { findError } from "../utils/utils.js"
+import { getJoyas, getFilter } from '../../src/models/joyasModel.js'
+import { findError } from "../../src/utils/utils.js"
 
 const prepararHATEOAS = (joyas) => {
   const results = joyas.map((j) => { return {
